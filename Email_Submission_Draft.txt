@@ -1,4 +1,4 @@
-Subject: Re: Solutions Sprint — 48-Hour Assignment Submission — [Your Full Name]
+Subject: Re: Solutions Sprint — 48-Hour Assignment Submission — Sankeerthana Sajjanapu
 
 Dear Nick and the Wantace Solutions Hiring Team,
 
@@ -7,7 +7,7 @@ Please find below and attached my complete submission for the Solutions Sprint (
 ---
 
 ### 1. Master Submission Deliverable (Parts A–D)
-* Consolidated PDF Document: [Attached as Wantace_Solutions_Sprint_Submission_[YourName].pdf]
+* Consolidated PDF Document: [Attached as Wantace_Solutions_Sprint_Submission_Sankeerthana_Sajjanapu.pdf]
 * Alternate Google Doc Link: [INSERT YOUR GOOGLE DOC LINK WITH "VIEW ONLY" ACCESS]
   *(Contains Part A Audit Notes & Evidence Photos, Part B Vardhan Steelware BRD, Part C AE Handoff Note, and Part D Marketing Content).*
 
@@ -53,7 +53,8 @@ Thank you for reviewing my sprint submission. I look forward to walking through 
 
 Warm regards,
 
-[Your Full Name]  
+Sankeerthana Sajjanapu  
 Candidate for Solutions Engineer Intern  
+GitHub: https://github.com/Sankeerthana502/wantace-solutions-sprint  
 [Your Contact Phone Number]  
 [Your LinkedIn Profile URL]

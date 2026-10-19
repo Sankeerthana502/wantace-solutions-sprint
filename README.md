@@ -1,5 +1,5 @@
 # Wantace Solutions Sprint — Candidate Submission Package
-**Candidate:** Solutions Engineer Intern  
+**Candidate:** Sankeerthana Sajjanapu (Solutions Engineer Intern)  
 **Project Workspace:** `/Users/manoj/.gemini/antigravity/scratch/wantace-solutions-sprint`  
 **Assessment Horizon:** 48 Hours | Complete Business Case & Technical Requirement Package
 
