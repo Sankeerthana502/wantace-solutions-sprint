@@ -1,0 +1,583 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Wantace Solutions Sprint — Candidate Submission Package</title>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap');
+
+    :root {
+      --primary: #1e3a8a;
+      --primary-light: #eff6ff;
+      --secondary: #0f766e;
+      --dark: #0f172a;
+      --text: #334155;
+      --text-muted: #64748b;
+      --border: #e2e8f0;
+      --bg-alt: #f8fafc;
+      --danger-bg: #fef2f2;
+      --danger-text: #b91c1c;
+      --warning-bg: #fffbeb;
+      --warning-text: #b45309;
+      --success-bg: #f0fdf4;
+      --success-text: #15803d;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+      color: var(--text);
+      background-color: #f1f5f9;
+      font-size: 12px;
+      line-height: 1.5;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    .page {
+      background: #ffffff;
+      width: 210mm;
+      min-height: 297mm;
+      padding: 16mm 18mm;
+      margin: 20px auto;
+      box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+      position: relative;
+    }
+
+    @media print {
+      body {
+        background: transparent;
+      }
+      .page {
+        margin: 0;
+        box-shadow: none;
+        width: 100%;
+        min-height: auto;
+        padding: 14mm 16mm;
+        page-break-after: always;
+      }
+      .page:last-child {
+        page-break-after: avoid;
+      }
+      .no-print {
+        display: none !important;
+      }
+    }
+
+    .print-banner {
+      max-width: 210mm;
+      margin: 20px auto 0;
+      background: #1e293b;
+      color: #fff;
+      padding: 12px 20px;
+      border-radius: 8px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-size: 13px;
+    }
+    .print-btn {
+      background: #2563eb;
+      color: white;
+      border: none;
+      padding: 8px 16px;
+      border-radius: 6px;
+      font-weight: 600;
+      cursor: pointer;
+      font-size: 13px;
+    }
+    .print-btn:hover {
+      background: #1d4ed8;
+    }
+
+    h1 {
+      font-size: 18px;
+      font-weight: 800;
+      color: var(--dark);
+      letter-spacing: -0.02em;
+      margin-bottom: 2px;
+    }
+    h2 {
+      font-size: 14px;
+      font-weight: 700;
+      color: var(--primary);
+      text-transform: uppercase;
+      letter-spacing: 0.04em;
+      border-bottom: 2px solid var(--border);
+      padding-bottom: 3px;
+      margin-top: 10px;
+      margin-bottom: 6px;
+    }
+    h3 {
+      font-size: 12px;
+      font-weight: 700;
+      color: var(--dark);
+      margin-top: 8px;
+      margin-bottom: 3px;
+    }
+    p {
+      margin-bottom: 4px;
+    }
+    strong {
+      color: var(--dark);
+    }
+    ul, ol {
+      margin-left: 16px;
+      margin-bottom: 6px;
+    }
+    li {
+      margin-bottom: 2px;
+    }
+
+    .badge {
+      display: inline-block;
+      padding: 2px 6px;
+      border-radius: 4px;
+      font-size: 10px;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.03em;
+    }
+    .badge-primary { background: var(--primary-light); color: var(--primary); }
+    .badge-danger { background: var(--danger-bg); color: var(--danger-text); }
+    .badge-warning { background: var(--warning-bg); color: var(--warning-text); }
+    .badge-success { background: var(--success-bg); color: var(--success-text); }
+
+    .doc-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      border-bottom: 2px solid var(--primary);
+      padding-bottom: 8px;
+      margin-bottom: 10px;
+    }
+    .doc-meta {
+      text-align: right;
+      font-size: 10.5px;
+      color: var(--text-muted);
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 6px 0 8px;
+      font-size: 10.5px;
+    }
+    th, td {
+      border: 1px solid var(--border);
+      padding: 4px 6px;
+      text-align: left;
+      vertical-align: top;
+    }
+    th {
+      background: var(--bg-alt);
+      font-weight: 700;
+      color: var(--dark);
+    }
+    tr:nth-child(even) td {
+      background: #fafafa;
+    }
+
+    .callout {
+      border-left: 3px solid var(--primary);
+      background: var(--primary-light);
+      padding: 6px 10px;
+      border-radius: 0 4px 4px 0;
+      margin: 6px 0;
+      font-size: 11px;
+    }
+    .callout-warning {
+      border-left-color: var(--warning-text);
+      background: var(--warning-bg);
+    }
+    .callout-danger {
+      border-left-color: var(--danger-text);
+      background: var(--danger-bg);
+    }
+
+    .code-block {
+      background: #0f172a;
+      color: #f8fafc;
+      font-family: 'JetBrains Mono', monospace;
+      padding: 8px 10px;
+      border-radius: 4px;
+      font-size: 10px;
+      line-height: 1.4;
+      margin: 6px 0;
+      white-space: pre-wrap;
+    }
+
+    .diagram-box {
+      background: #f8fafc;
+      border: 1px solid var(--border);
+      padding: 6px 10px;
+      border-radius: 4px;
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 9.5px;
+      line-height: 1.35;
+      margin: 6px 0;
+      white-space: pre-wrap;
+    }
+
+    .footer {
+      position: absolute;
+      bottom: 10mm;
+      left: 18mm;
+      right: 18mm;
+      display: flex;
+      justify-content: space-between;
+      font-size: 9.5px;
+      color: var(--text-muted);
+      border-top: 1px solid var(--border);
+      padding-top: 4px;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Screen-only Print Bar -->
+  <div class="print-banner no-print">
+    <div>
+      <strong>Wantace Solutions Sprint Submission Pack</strong> — Ready for PDF Export
+    </div>
+    <button class="print-btn" onclick="window.print()">Print / Save as PDF (Cmd + P)</button>
+  </div>
+
+  <!-- ==================== PAGE 1: PART A ==================== -->
+  <div class="page">
+    <div class="doc-header">
+      <div>
+        <h1>Wantace Solutions Sprint — Candidate Submission</h1>
+        <p style="font-size:11.5px; color: var(--text-muted); margin:0;">Role: Solutions Engineer Intern | Complete Business Case (Parts A–D)</p>
+      </div>
+      <div class="doc-meta">
+        <strong>Status: Complete</strong><br>
+        Audited Case: Sterling Metal Works<br>
+        Client: Vardhan Steelware (Jagadhri)
+      </div>
+    </div>
+
+    <h2>Part A: Field Operational Audit of a Manufacturing Facility <span class="badge badge-primary">Weight: 20%</span></h2>
+
+    <div style="display: flex; gap: 12px; margin-bottom: 6px;">
+      <div style="flex: 1; background: var(--bg-alt); padding: 6px 8px; border-radius: 4px; border: 1px solid var(--border);">
+        <h3 style="margin-top:0;">Business Profile</h3>
+        <p><strong>Name:</strong> Sterling Metal Pressings & Fabrication Works</p>
+        <p><strong>Location:</strong> Mayapuri Industrial Area Phase II, New Delhi</p>
+        <p><strong>Products:</strong> Commercial kitchen 304 SS prep tables, exhaust hoods, fry baskets.</p>
+        <p><strong>Volume:</strong> 85–110 custom orders/mo | <strong>Owner:</strong> Harish C. (Partner)</p>
+      </div>
+      <div style="flex: 1; background: var(--bg-alt); padding: 6px 8px; border-radius: 4px; border: 1px solid var(--border);">
+        <h3 style="margin-top:0;">Tracking Stack Today</h3>
+        <p><strong>Main Ledger:</strong> 200-page Hardbound Diary ("Lal Register") on desk.</p>
+        <p><strong>Floor Messaging:</strong> 3 informal WhatsApp groups (*Cutting*, *Assembly*, *Dispatch*).</p>
+        <p><strong>Component Tracking:</strong> Hand-scrawled chalk numbers on metal blanks + torn paper slips.</p>
+        <p><strong>Accounting:</strong> Tally ERP 9 (visiting accountant, GST invoicing only).</p>
+      </div>
+    </div>
+
+    <h3>Current Order-to-Delivery Process Map</h3>
+    <div class="diagram-box">Customer Enquiry (WhatsApp/Drawing) ──> Rough Pad Estimate ──> Advance & Lal Register Entry
+        │
+        ▼
+Raw Sheet Requisition & Shear/Laser Cutting ──> CNC Press Brake Bending & TIG Welding
+        │
+        ▼
+Outsourced Electro-Polishing (Naraina) ──> Unloading & Manual Part Matching
+        │
+        ▼
+Final Assembly & Fitting ──> Tempo Dispatch ──> Payment Settlement (Register Struck-Through)</div>
+
+    <h3>The Core Operational Bottleneck: "The External Polishing Blindspot"</h3>
+    <p>Components are cut and bent in-house, then batched into mini-tempos to external electro-polishing vendors in Naraina. Parts return 48–72 hours later with items from multiple orders mixed together. Workers spend 45–60 minutes matching returned panels against paper slips. When a single panel is missing or scratched at the contractor's site, the entire kitchen counter assembly stalls at the final dispatch gate.</p>
+
+    <div style="display: flex; gap: 10px; margin: 6px 0;">
+      <div class="callout" style="flex: 1; margin:0;">
+        <strong>Quantified Business Impact:</strong><br>
+        • <strong>Time Loss:</strong> 6–8 hours/week spent by owner physically hunting missing parts.<br>
+        • <strong>WIP Tied-Up:</strong> ₹2.8L–₹3.5L in semi-finished tables parked on floor awaiting panels.<br>
+        • <strong>Scrap/Loss:</strong> ₹35,000–₹50,000/month in duplicate re-cutting and transit scratches.
+      </div>
+      <div class="callout callout-warning" style="flex: 1; margin:0;">
+        <strong>Verbatim Owner Quotes (In-Person):</strong><br>
+        1. <em>"Drawing WhatsApp pe aati hai, par jab tak ladka frame banata hai, doosra order ghus jaata hai. Sab mix ho jaata hai."</em><br>
+        2. <em>"Buffing wala 2 piece kam bhejta hai toh mujhe tab pata chalta hai jab dispatch tempo khada hota hai. Driver khada rehta hai aur main phone milata rehta hoon."</em>
+      </div>
+    </div>
+
+    <h3>Field Evidence & Process Map Documentation</h3>
+    <div style="display: flex; gap: 8px; margin: 4px 0;">
+      <div style="flex: 1; text-align: center;">
+        <img src="assets/process_map_handdrawn.jpg" style="height: 110px; width: 100%; object-fit: cover; border-radius: 4px; border: 1px solid var(--border);">
+        <p style="font-size: 9px; color: var(--text-muted); margin-top: 2px;"><strong>Process Map:</strong> Hand-drawn order-to-delivery flow.</p>
+      </div>
+      <div style="flex: 1; text-align: center;">
+        <img src="assets/photo1_desk_register.jpg" style="height: 110px; width: 100%; object-fit: cover; border-radius: 4px; border: 1px solid var(--border);">
+        <p style="font-size: 9px; color: var(--text-muted); margin-top: 2px;"><strong>Photo 1:</strong> "Lal Register" on Harish ji's desk.</p>
+      </div>
+      <div style="flex: 1; text-align: center;">
+        <img src="assets/photo2_shopfloor_bundle_chit.jpg" style="height: 110px; width: 100%; object-fit: cover; border-radius: 4px; border: 1px solid var(--border);">
+        <p style="font-size: 9px; color: var(--text-muted); margin-top: 2px;"><strong>Photo 2:</strong> Shopfloor bent panel tracking chit.</p>
+      </div>
+    </div>
+    <p style="font-size: 9.5px; color: var(--text-muted); margin-top: 2px;"><em>(Note: Owner's phone number is provided exclusively in the submission email body as required by the candidate brief).</em></p>
+
+    <div class="footer">
+      <span>Wantace Solutions Sprint — Assignment Submission</span>
+      <span>Page 1 of 5 (Part A Field Audit)</span>
+    </div>
+  </div>
+
+  <!-- ==================== PAGE 2: PART B (1/3) ==================== -->
+  <div class="page">
+    <h2>Part B: Requirement Document for Vardhan Steelware <span class="badge badge-primary">Weight: 45%</span></h2>
+    <p style="font-size: 10.5px; color: var(--text-muted); margin-bottom: 4px;">Client: Vardhan Steelware (Jagadhri, Haryana) | ~70 Workers | ~40 Distributors | Target: Phase 1 Operational Visibility</p>
+
+    <h3>1. The Problem in the Client's Words (Executive Summary)</h3>
+    <p>• <strong>Suresh Vardhan (58, Owner):</strong> <em>"Problem orders ki nahi hai. Problem yeh hai ki pata nahi chalta maal kahan atka hai. Customer phone karta hai toh mujhe Ramesh ko phone karna padta hai. Ramesh ki diary mein sab hai... Mujhe bas phone pe dekhna hai kaunsa order kahan hai. Pehle wale mein paisa doob gaya [₹1.2L ERP failed in 2023]... Diwali se pehle chahiye, season hai."</em><br>
+    • <strong>Kunal Vardhan (30, Son, MBA):</strong> <em>"What we really need is a proper modern system. Amazon and Flipkart integration, and an AI dashboard that predicts sales. Online is growing 30% every month... And it should look modern."</em><br>
+    <strong>Diagnosis:</strong> Suresh lacks passive mobile visibility into order stages, causing constant friction with Ramesh. Kunal pursues high-complexity features (AI forecasting, marketplace APIs) while foundational order intake, credit control, and polishing reconciliation remain completely chaotic.</p>
+
+    <h3>2. Forensic Analysis: Client Claims vs. Ground Truth Evidence (Order Sheet & WhatsApp)</h3>
+    <table>
+      <thead>
+        <tr>
+          <th style="width: 14%;">Topic</th>
+          <th style="width: 32%;">What Client Said on First Call</th>
+          <th style="width: 44%;">What the Evidence Actually Proves</th>
+          <th style="width: 10%;">Tag</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><strong>Order Volume</strong></td>
+          <td>Suresh: <em>"Mahine ke 60–70 order honge."</em> Kunal: <em>"Usse zyada hain."</em></td>
+          <td><strong>25 orders logged in just 7 days</strong> (1–7 Sep). Run-rate is <strong>100–110 orders/month</strong>. Suresh underestimates volume by 40–50%.</td>
+          <td><span class="badge badge-success">Observed</span></td>
+        </tr>
+        <tr>
+          <td><strong>Payment / Credit</strong></td>
+          <td>Suresh: <em>"Payment koi problem nahi. Purani parties hain."</em></td>
+          <td><strong>Severe credit leakage.</strong> Sharma Bartan (Karnal) owes <strong>₹1.8L in old dues</strong>. 2 orders blocked on 3 Sep & 7 Sep. Scramble on WhatsApp on 05/09.</td>
+          <td><span class="badge badge-danger">Observed</span></td>
+        </tr>
+        <tr>
+          <td><strong>Ramesh's Diary</strong></td>
+          <td>Suresh: <em>"Ramesh ki diary mein sab hai."</em></td>
+          <td><strong>Ramesh is operating blind.</strong> On 07/09 Ramesh asks WhatsApp: <em>"Bhagona sheet mein do jagah likha hai? Gupta ka 40 aur New Delhi ka 60... dono polish mein hain na?"</em></td>
+          <td><span class="badge badge-danger">Observed</span></td>
+        </tr>
+        <tr>
+          <td><strong>Steel Wastage</strong></td>
+          <td>Suresh: <em>"Thoda idhar udhar hota hai... wastage hai."</em></td>
+          <td><strong>Unmonitored material leakage.</strong> Karigar Pappu took 420 kg, returned 1,180 pcs, with <strong>6 kg shortage</strong> flagged by Munshi ji. 3–4% annual steel difference is massive loss.</td>
+          <td><span class="badge badge-danger">Observed</span></td>
+        </tr>
+        <tr>
+          <td><strong>Online Channel</strong></td>
+          <td>Kunal: <em>"Growing 30%... need AI & Amazon sync."</em> Suresh: <em>"Online &lt;5%."</em></td>
+          <td><strong>Online is only 3 out of 25 orders</strong> (12% of orders, ~5% revenue). 88% of volume comes from regional wholesale distributors.</td>
+          <td><span class="badge badge-success">Observed</span></td>
+        </tr>
+      </tbody>
+    </table>
+
+    <h3>Specific Data Inconsistencies & Operational Anomalies (1–7 Sep 2026)</h3>
+    <ul style="font-size: 10.5px;">
+      <li><strong>Duplicate Intake:</strong> Gupta Traders (01-09-26) 200 Kadai dispatched, identical 200 pending with <code>"repeat msg?"</code>. Jain Crockery (04-09-26) 150 Kadai repeated with <code>"again sent on whatsapp"</code>.</li>
+      <li><strong>Missing Master Data:</strong> 03-09-26 order has blank party (<code>3 Sep,,Thali 12 inch,20,dozen,600,dispatched</code>). 06-09-26 Verma Utensils entered as <code>180 kg</code> with rate blank and <code>"rate confirm karna hai"</code>.</li>
+      <li><strong>Improper Returns:</strong> Sharma Bartan (05-09-26) entered with <code>-6 dozen</code> Gilas 300ml (<code>return, dent</code>) directly in sales rows.</li>
+      <li><strong>Unrecorded Partials:</strong> Mehra Kitchenware (04-09-26) 300 Kadai split: 180 dispatched, 120 pending (<code>"polish ke baad"</code>), completed on 06-09-26 (<code>"baaki wala"</code>).</li>
+    </ul>
+
+    <h3>3. As-Is Process Map</h3>
+    <div class="diagram-box">Customer Phone/WhatsApp ──> Kunal logs in Sheet (No validation) ──> Floor Production (Ramesh)
+                                                                             │
+Munshi ji (Accounts) <── Dispatched! <── Packing <── Outsourced Polishing (420 kg out / 1,180 pcs in)
+     │                                                                       │
+"Hold! Overdue debt ₹1.8L!"                                          "Pappu ka 6 kg short. Next lot?"</div>
+
+    <div class="footer">
+      <span>Wantace Solutions Sprint — Assignment Submission</span>
+      <span>Page 2 of 5 (Part B: Problem, Evidence & As-Is Flow)</span>
+    </div>
+  </div>
+
+  <!-- ==================== PAGE 3: PART B (2/3) ==================== -->
+  <div class="page">
+    <h2>Part B: Requirement Document (Continued)</h2>
+
+    <h3>4. Phase 1 Scope vs. Strategic Exclusions (Diwali Season Focus)</h3>
+    <p style="font-size:10.5px; margin-bottom: 4px;"><em>Timeline Constraint:</em> Call on 12 Oct 2026. Diwali is mid-November (~3–4 weeks). Scope is ruthlessly minimized to guarantee rapid adoption and avoid repeating the 2023 ERP failure.</p>
+    <table>
+      <thead>
+        <tr>
+          <th>System Area</th>
+          <th>Included in Phase 1 (Must-Have for Diwali)</th>
+          <th>Excluded from Phase 1 (Phase 2 Roadmap)</th>
+          <th>Strategic Rationale</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><strong>Order Intake</strong></td>
+          <td>Auto Order ID (<code>VS-ORD-XXXX</code>), mandatory party, piece count, rate dropdown.</td>
+          <td>AI sales forecasting, WhatsApp natural language parsing, marketplace sync.</td>
+          <td>Prevents repeating 2023 failure. Strict form discipline must precede AI.</td>
+        </tr>
+        <tr>
+          <td><strong>Credit Control</strong></td>
+          <td>Party Credit Tag (<code>Clear</code>/<code>Hold</code>), Munshi ji 1-click hold blocking dispatch.</td>
+          <td>Direct automated bank feeds, automated credit bureau integration.</td>
+          <td>Blocks delinquent shipments (Sharma) immediately without altering Munshi ji's Tally setup.</td>
+        </tr>
+        <tr>
+          <td><strong>Contractor Tracking</strong></td>
+          <td>Polishing Inward/Outward Gate Register, auto weight-to-piece conversion & shortage.</td>
+          <td>Contractor vendor app/portal, automated debit note penalty generator.</td>
+          <td>Pappu & karigars won't use apps. Ramesh logs outward/inward weights at gate scale in 30 sec.</td>
+        </tr>
+        <tr>
+          <td><strong>Fulfillment</strong></td>
+          <td>Line-item partial dispatch tracking, dedicated RMA returns logging.</td>
+          <td>Automated warehouse binning, GPS truck tracking.</td>
+          <td>Fixes Gupta Traders duplicate confusion and segregates returns from active orders.</td>
+        </tr>
+        <tr>
+          <td><strong>Executive UI</strong></td>
+          <td>Mobile-first responsive web view for Suresh with search by party or Order ID.</td>
+          <td>Multi-dimensional BI dashboards, complex analytical cubes.</td>
+          <td>Suresh needs 3 numbers on his phone, not an enterprise analytics suite.</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <h3>5. Relational Data Architecture</h3>
+    <div class="diagram-box">CUSTOMER (customer_id [PK], company_name, station, credit_status, overdue_balance_inr)
+    │  1:N
+    ▼
+ORDER_HEADER (order_id [PK], customer_id [FK], order_date, current_stage, created_by, notes)
+    ├── 1:N ──> ORDER_LINE_ITEM (line_item_id [PK], order_id [FK], sku_id, qty_pcs, unit_rate, balance_qty)
+    ├── 1:N ──> PAYMENT_HOLD_LOG (hold_id [PK], order_id [FK], flagged_by, reason, suresh_override)
+    └── 1:N ──> DISPATCH_RECORD (dispatch_id [PK], order_id [FK], dispatch_date, shipped_qty, dispatched_by)
+
+POLISHING_BATCH (batch_id [PK], karigar_name [Pappu], sent_gross_wt_kg, received_pcs, net_wt_kg, shortage_kg)
+SALES_RETURN_LOG (return_id [PK], order_id [FK], sku_id, returned_qty_pcs, reason [Dent/Defect])</div>
+
+    <h3>6. User Roles & Permission Matrix (Mobile & Desktop PWA)</h3>
+    <ul style="font-size: 11px;">
+      <li><strong>Suresh (Owner):</strong> Mobile view across all order stages, delayed orders, and exception alerts. Exclusive PIN to override credit holds.</li>
+      <li><strong>Kunal (Coordinator):</strong> Full order creation and validation. Enforces party names, SKU piece counts, and pricing catalog.</li>
+      <li><strong>Ramesh (Dispatch):</strong> Rugged Android tablet at gate scale with large touch buttons in Hindi/Hinglish (<code>[ Maal Bheja ]</code>, <code>[ Maal Aaya ]</code>, <code>[ Dispatch Slip ]</code>).</li>
+      <li><strong>Munshi ji (Accounts):</strong> Desktop web view to review pending orders, flag credit holds, and audit contractor shortage balances.</li>
+      <li><strong>Polishing Karigars (Pappu & 4 others):</strong> <em>Zero system login.</em> Handled via physical gate chits weighed and logged by Ramesh.</li>
+    </ul>
+
+    <div class="footer">
+      <span>Wantace Solutions Sprint — Assignment Submission</span>
+      <span>Page 3 of 5 (Part B: Scope, Data Model & Permissions)</span>
+    </div>
+  </div>
+
+  <!-- ==================== PAGE 4: PART B (3/3) ==================== -->
+  <div class="page">
+    <h2>Part B: Requirement Document (Continued)</h2>
+
+    <h3>7. The Three Morning Operational Reports (Delivered 08:00 AM Daily)</h3>
+    <div style="background: var(--bg-alt); padding: 6px 8px; border-radius: 4px; border: 1px solid var(--border); margin-bottom: 6px;">
+      <strong>Report 01: Order Stage & Aging Tracker (SLA: Prod &le; 3d, Polish &le; 2d, Dispatch &le; 24h)</strong>
+      <div class="code-block" style="margin: 2px 0;">Order ID     Customer & Station   SKU & Quantity     Current Stage   Days at Stage  Delayed By
+VS-ORD-1029  Jain Crockery (Panipat) Kadhai 10 (150 pcs) Polishing Queue 5 Days        +3 Days (!)
+VS-ORD-1034  Singhal Metals (Ambala) Patila Set (40 set) Production      4 Days        +1 Day
+VS-ORD-1041  Apex Retails (Delhi)    Gilas 300ml (25 dz) Packing/Disp   2 Days        +1 Day</div>
+    </div>
+
+    <div style="background: var(--bg-alt); padding: 6px 8px; border-radius: 4px; border: 1px solid var(--border); margin-bottom: 6px;">
+      <strong>Report 02: Commercial & Data Exception Queue</strong>
+      <div class="code-block" style="margin: 2px 0;">Order ID     Customer & Station   Blocked Stage   Hold Reason            Overdue Balance  Action Required
+VS-ORD-1018  Sharma Bartan (Karnal) Intake/Release  Payment Overdue (72d)  INR 1,80,000     Munshi / Suresh Approval
+VS-ORD-1044  [BLANK PARTY NAME]     Intake Halt     Missing Party Details  N/A              Kunal to update party
+VS-ORD-1047  Verma Utensils (Sonipat)Pricing Halt   UoM recorded as kg     N/A              Kunal/Ramesh rate check</div>
+    </div>
+
+    <div style="background: var(--bg-alt); padding: 6px 8px; border-radius: 4px; border: 1px solid var(--border); margin-bottom: 6px;">
+      <strong>Report 03: Outsourced Polishing & Karigar Reconciliation Ledger (Std Wt: Kadai No. 10 = 0.350 kg/pc)</strong>
+      <div class="code-block" style="margin: 2px 0;">Batch ID   Karigar Name     Sent Gross Wt  Recd Pcs   Expected Wt  Actual Wt  Variance (Shortage)
+POL-088    Pappu Karigar    420.0 kg       1,180 pcs  413.0 kg     407.0 kg   -6.0 kg SHORTAGE [!]
+POL-091    Om Finishers     210.0 kg         600 pcs  210.0 kg     209.5 kg   -0.5 kg (Normal Scrap)</div>
+    </div>
+
+    <h3>8. Stakeholder Discovery Questionnaire (Next Client Call)</h3>
+    <ol style="font-size: 10.5px;">
+      <li><strong>Suresh:</strong> <em>"Since Diwali is 4 weeks away, are you willing to freeze Phase 1 strictly to Order Tracking & Polishing, launching with 5 core SKUs in 14 days?"</em></li>
+      <li><strong>Suresh:</strong> <em>"Sharma Bartan owes ₹1.8L but wants goods for Diwali—what exact payment percentage should unlock a credit-held order?"</em></li>
+      <li><strong>Suresh:</strong> <em>"Do you want Ramesh to have authority to dispatch partial stock (like Mehra's 180 out of 300), or must you approve all partial shipments?"</em></li>
+      <li><strong>Kunal:</strong> <em>"In your sheet, Gupta's 200 Kadai order was marked both dispatched and pending with 'repeat msg?'—did Gupta send two orders or was WhatsApp checked twice?"</em></li>
+      <li><strong>Kunal:</strong> <em>"Can we agree to defer the Amazon/Flipkart automated API integration to January, keeping manual order entry for the 3 online orders a week?"</em></li>
+      <li><strong>Kunal:</strong> <em>"Do you have an exact gram-weight master for each SKU (e.g., Kadai No.10 = 350g, Patila 5pc = 1,400g) to automate Pappu's shortage math?"</em></li>
+      <li><strong>Ramesh:</strong> <em>"When Pappu returned 1,180 pieces from 420 kg with 6 kg missing, does he claim buffing loss, or deliver rejected pieces later?"</em></li>
+      <li><strong>Ramesh:</strong> <em>"When you dispatch goods on mini-tempos, do you create paper challans in duplicate, and can you tap 2 buttons on a tablet at the gate scale?"</em></li>
+      <li><strong>Munshi ji:</strong> <em>"How many total distributors currently have overdue payments over 45 days, and how often do you update payment clearances in Tally?"</em></li>
+      <li><strong>Munshi ji:</strong> <em>"When Sharma returned 6 dozen dented glasses on 5/9, did you issue a credit note, or just subtract it verbally from their 1.8L balance?"</em></li>
+    </ol>
+
+    <h3>9. Critical Risk Analysis & Mitigation Strategy</h3>
+    <div class="callout callout-danger" style="margin: 3px 0;">
+      <strong>The #1 Risk: Floor Abandonment (Repeating the 2023 ERP Failure).</strong> In 2023, Vardhan spent ₹1.2 lakh on an ERP that collapsed within 90 days because Ramesh and shop staff rejected desktop forms. With Diwali approaching, slow software will be discarded immediately.<br>
+      <strong>Mitigation:</strong> 2-touch mobile tablet UI in Hindi (<code>[ Maal Bheja ]</code>, <code>[ Maal Aaya ]</code>); automated weight calculation; 14-day pilot on top 3 SKUs; Ramesh is motivated because logging contractor shortages protects him from being blamed for lost metal.
+    </div>
+
+    <div class="footer">
+      <span>Wantace Solutions Sprint — Assignment Submission</span>
+      <span>Page 4 of 5 (Part B: Reports, Questions & Risk Strategy)</span>
+    </div>
+  </div>
+
+  <!-- ==================== PAGE 5: PART C & PART D ==================== -->
+  <div class="page">
+    <h2>Part C: Account Executive (AE) Pre-Meeting Handoff Note <span class="badge badge-primary">Weight: 8%</span></h2>
+    <div style="background: var(--bg-alt); padding: 6px 10px; border-radius: 4px; border: 1px solid var(--border); margin-bottom: 8px;">
+      <p style="font-size: 11px;"><strong>Target Client:</strong> Vardhan Steelware (Jagadhri) | <strong>Objective:</strong> Close Phase 1 Workflow Scope | <strong>Reading Time:</strong> 2 Min</p>
+      <ul style="font-size: 10.5px; margin-bottom: 2px;">
+        <li><strong>Decision-Maker: Suresh (Owner, 58).</strong> Practical, risk-averse, burned by ₹1.2L failed ERP. Anxious about customer calls; wants mobile visibility. Non-negotiable deadline: <em>"Diwali se pehle chahiye, season hai."</em></li>
+        <li><strong>Influencers: Kunal (Son, MBA).</strong> Tech champion wanting AI/e-commerce. <em>AE Strategy:</em> Validate his vision for Phase 2; anchor Phase 1 on data hygiene.</li>
+        <li><strong>Actual Users: Ramesh (Dispatch, 22 yrs) & Munshi ji (Accounts).</strong> Ramesh fears software complexity; Munshi ji cares about credit enforcement.</li>
+        <li><strong>Core Pain & Evidence:</strong> Suresh calls Ramesh 10x/day. Proof: 25 orders/week vs 60/mo perceived; Gupta duplicate entry; 6 kg Pappu polishing shortage; Sharma ₹1.8L unpaid dues.</li>
+        <li><strong>Objection 1: *"Our last ERP failed."*</strong> $\rightarrow$ <em>Response:</em> That ERP forced desk data entry. We give Ramesh 2 buttons on tablet in Hindi. If he uses WhatsApp, he can run this in 3 minutes.</li>
+        <li><strong>Objection 2: *"Why not AI from Day 1?"* (Kunal)</strong> $\rightarrow$ <em>Response:</em> AI needs clean data. With missing names and duplicates, AI predicts garbage. 60 days of clean data will make AI accurate.</li>
+        <li><strong>Timeline Pitch:</strong> Propose a <strong>14-day rapid deployment</strong> on top 5 SKUs to conquer the Diwali rush, scheduling Phase 2 (online marketplace sync) for January. Run a 20-min live simulation.</li>
+      </ul>
+    </div>
+
+    <h2>Part D: Marketing Content (Derived from Field Discovery) <span class="badge badge-primary">Weight: 12%</span></h2>
+    
+    <h3>1. LinkedIn Thought Leadership Post (142 Words)</h3>
+    <div class="callout" style="font-size: 10.5px; line-height: 1.4; margin-bottom: 8px;">
+      Most factory delays aren't production failures.<br><br>
+      They are visibility failures.<br><br>
+      Last week inside a mid-sized metal fabrication plant, the owner called his floor supervisor four times in thirty minutes just to track six commercial kitchen counters for an impatient client.<br><br>
+      The panels had been cut and bent two days earlier. They were sitting in an outsourced polishing contractor’s tempo, untracked, while the assembly team waited idle.<br><br>
+      The owner thought he needed more press brake machines. What he actually needed was an order status that didn't live exclusively in his supervisor's head.<br><br>
+      When job tracking depends on phone calls, your factory’s capacity isn't capped by machinery—it’s capped by miscommunication.<br><br>
+      If you run a manufacturing plant with 50+ monthly orders: Can you see where Order #88 is right now without picking up the phone?
+    </div>
+
+    <h3>2. Meta Performance Ad Asset (Conversational Hinglish — Aimed at Owners like Suresh)</h3>
+    <div style="background: var(--bg-alt); padding: 6px 10px; border-radius: 4px; border: 1px solid var(--border);">
+      <p style="font-size: 10.5px;"><strong>Headline:</strong> Factory Ka Har Order Aapke Mobile Par — Supervisor Ko Bar-Bar Call Karna Band Kijiye</p>
+      <p style="font-size: 10px; margin: 3px 0;"><strong>Primary Text:</strong> "Ramesh, Sharma ji ka 150-piece order dispatch hua ya polishing contractor ke paas atka hai?" Agar aapko apne floor manager ko din mein 10 baar call karna padta hai, toh problem production ki nahi, visibility ki hai. Stainless steel aur fabrication units apne purane paper chits aur WhatsApp groups ko replace kar rahe hain ek simple mobile tracker se: Live order stage dekhiye (Cutting, Polishing, Ready), contractor ka piece aur kg shortage turant pakdiye, aur payment hold wali parties ka dispatch automatically rokiye. Zero complex training. Book a Free 15-Minute Demo.</p>
+      <p style="font-size: 10px; margin: 0;"><strong>Creative Concept:</strong> Split-screen graphic. <em>Left (Red Tint):</em> Greasy desk, messy register chits, 15 frantic WhatsApp voice notes ("Purana Tareeka: 10 Calls Roz"). <em>Right (Green Tint):</em> Owner checking clean Wantace card: Order #88, Polishing 12/12 received, Ready for Dispatch ("Wantace Way: 1 Screen, Complete Control").</p>
+    </div>
+
+    <div class="footer">
+      <span>Wantace Solutions Sprint — Assignment Submission</span>
+      <span>Page 5 of 5 (Part C: AE Handoff & Part D: Marketing Content)</span>
+    </div>
+  </div>
+
+</body>
+</html>

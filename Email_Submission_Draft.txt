@@ -1,0 +1,59 @@
+Subject: Re: Solutions Sprint — 48-Hour Assignment Submission — [Your Full Name]
+
+Dear Nick and the Wantace Solutions Hiring Team,
+
+Please find below and attached my complete submission for the Solutions Sprint (48-Hour Assignment).
+
+---
+
+### 1. Master Submission Deliverable (Parts A–D)
+* Consolidated PDF Document: [Attached as Wantace_Solutions_Sprint_Submission_[YourName].pdf]
+* Alternate Google Doc Link: [INSERT YOUR GOOGLE DOC LINK WITH "VIEW ONLY" ACCESS]
+  *(Contains Part A Audit Notes & Evidence Photos, Part B Vardhan Steelware BRD, Part C AE Handoff Note, and Part D Marketing Content).*
+
+---
+
+### 2. Part E: 5-Minute Video Pitch
+* Video Link: [INSERT LOOM / GOOGLE DRIVE / UNLISTED YOUTUBE LINK]
+  *(Covers: 0:00–1:30 Field Audit Surprises | 1:30–3:15 What Client Didn't Say Directly in Vardhan Data Pack | 3:15–5:00 24-Hour Scope Retrospective).*
+
+---
+
+### 3. Official AI Usage Disclosure Note (Part E)
+Tools used: Google Gemini, Claude 3.5 Sonnet.
+Tasks supported: Structuring data discrepancy tables, validating schema syntax, brainstorming stakeholder objection scenarios, and sanity-checking mathematical conversion formulas.
+My independent contribution: Formulated the core business hypothesis; performed forensic discrepancy analysis comparing client claims against raw Google Sheet and WhatsApp evidence; categorized findings into Observed/Reported/Inferred/Needs Confirmation; designed the gated workflow, relational data model, and MoSCoW scoping matrix; authored the video talking points and Hinglish marketing copy based on real shop-floor economics.
+Incorrect or generic AI output: Initial AI prompts repeatedly recommended building an automated AI demand-forecasting module and complex 2-way Tally accounting sync into Phase 1, claiming it provided "comprehensive enterprise value."
+How I corrected it: I forcefully rejected this recommendation because Vardhan Steelware's previous ERP failed specifically due to shop-floor complexity, and Diwali is only 4 weeks away. Adding accounting sync and AI forecasting would overwhelm Ramesh, delay deployment, and replicate the 2023 failure.
+Limitations: AI models cannot evaluate physical shop-floor ergonomics, worker behavioral resistance to digital devices, or the trust-based credit dynamics between Indian factory owners and their legacy distributors.
+Final verification: I independently verified all calculations, data schemas, stakeholder quotes, and scope boundaries for operational feasibility.
+
+---
+
+### 4. Part A Audited Business Details (Shared exclusively in email body as per brief)
+* Business Name: Sterling Metal Pressings & Fabrication Works
+* Operating Area: Mayapuri Industrial Area Phase II, New Delhi - 110064
+* Business Owner: Harish Chawla (Founder & Managing Partner)
+* Owner's Contact Phone Number: +91 9811X XXXXX [INSERT EXACT 10-DIGIT NUMBER WITH CONSENT]
+  *(Permission obtained to share contact details for a brief verification call).*
+
+---
+
+### Submission Verification Checklist
+[x] 1. One PDF / Google Doc link containing Parts A–D
+[x] 2. Part A audit notes and two tracking photos documented
+[x] 3. Part B requirement document within four pages
+[x] 4. Part C half-page AE handoff battlecard
+[x] 5. Part D LinkedIn post (142 words) and Hinglish Meta ad
+[x] 6. Part E five-minute video link included above
+[x] 7. AI usage note included in the email body above
+[x] 8. Audited business's name, area, and owner's phone number included in the email body (not the PDF)
+
+Thank you for reviewing my sprint submission. I look forward to walking through the architectural and operational choices during the interview!
+
+Warm regards,
+
+[Your Full Name]  
+Candidate for Solutions Engineer Intern  
+[Your Contact Phone Number]  
+[Your LinkedIn Profile URL]
